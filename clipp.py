@@ -9,7 +9,7 @@ def upp(tekst):
 
 
 def copy2clip(txt):
-    cmd='echo '+txt.strip()+'|clip'
+    cmd=f"echo {txt.strip()}|clip"
     return check_call(cmd, shell=True)
 
 tekst = input('hej:')
