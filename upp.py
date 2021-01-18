@@ -1,30 +1,41 @@
 import pyperclip
+from tkinter import *
+from win32clipboard import *
 
-def upp():
-    tekst = input(': ')
+# def upp():
+#     tekst = input(': ')
+#     tekst = tekst.upper()
+#     print(tekst)
+#     pyperclip.copy(tekst)
+#     return tekst
+# upp()
+
+def take_sch():
+    OpenClipboard()
+    schowek = str(GetClipboardData())
+    CloseClipboard()
+    return schowek
+
+
+def upp1():
+    tekst = take_sch()
+    
+    # tekst = entry.get()
     tekst = tekst.upper()
-    print(tekst)
     pyperclip.copy(tekst)
     return tekst
-upp()
 
 
-# pyperclip.copy(tekst)
+root = Tk()
+label = Label(root, text="wklej i kliknij")
+label.grid(padx=0, pady=0)
+button = Button(root, padx=10, pady=10, bg='red', text="POWIĘKSZ", command=upp1)
+button.grid(padx=1, pady=2)
+# entry = Entry(root)
+# entry.grid(padx=0, pady=1)
 
 
-# from tkinter import *
-# from tkinter import messagebox
 
-# tkWindow = Tk()  
-# tkWindow.geometry('400x150')  
-# tkWindow.title('PythonExamples.org - Tkinter Example')
 
-# def showMsg():  
-#     messagebox.showinfo('Message', 'You clicked the Submit button!')
+root.mainloop()
 
-# button = Button(tkWindow,
-# 	text = 'Submit',
-# 	command = showMsg)  
-# button.pack()  
-  
-# tkWindow.mainloop()
